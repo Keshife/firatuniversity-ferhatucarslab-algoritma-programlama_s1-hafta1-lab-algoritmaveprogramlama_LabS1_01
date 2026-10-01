@@ -1,4 +1,59 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No: 260541053
+AD-SOYAD: Ömer DOĞAN
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+
+BAŞLAT
+
+  GİRDİ kalan_gun_sayisi ("Sınava kaç gün kaldı?: ")
+  
+  EĞER kalan_gun_sayisi < 1 İSE
+    YAZDIR "Geçmiş olsun, sınav günü geldi veya geçti."
+  DEĞİLSE
+    toplam_konu = 10
+    tamamlanan_konu_sayisi = 0
+    
+    GİRDİ yorgunluk_seviyesi ("Başlangıç yorgunluk seviyeniz (1-10): ")
+
+    gun = 1
+    DÖNGÜ gun <= kalan_gun_sayisi VE tamamlanan_konu_sayisi < toplam_konu İKEN
+      YAZDIR "--- Gün " + gun + " İçin Çalışma Başlıyor ---"
+      
+      EĞER yorgunluk_seviyesi >= 8 İSE
+        YAZDIR "Bu halde kafa ders almaz. Zorlama, dinlen."
+        yorgunluk_seviyesi = yorgunluk_seviyesi - 5
+      DEĞİLSE EĞER yorgunluk_seviyesi >= 5 İSE
+        YAZDIR "Halledersin. Çok da zorlamadan 1 konu çalış."
+        tamamlanan_konu_sayisi = tamamlanan_konu_sayisi + 1
+        yorgunluk_seviyesi = yorgunluk_seviyesi + 1
+      DEĞİLSE
+        YAZDIR "Bu enerjiye sıkı çalışma yakışır. 4 konu çalış."
+        tamamlanan_konu_sayisi = tamamlanan_konu_sayisi + 4
+        yorgunluk_seviyesi = yorgunluk_seviyesi + 2
+      BİTİR_EĞER
+
+      EĞER tamamlanan_konu_sayisi > toplam_konu İSE
+        tamamlanan_konu_sayisi = toplam_konu
+      BİTİR_EĞER
+
+      EĞER yorgunluk_seviyesi < 1 İSE
+        yorgunluk_seviyesi = 1
+      BİTİR_EĞER
+
+      EĞER yorgunluk_seviyesi > 10 İSE
+        yorgunluk_seviyesi = 10
+      BİTİR_EĞER
+
+      gun = gun + 1
+    BİTİR_DÖNGÜ
+
+    EĞER tamamlanan_konu_sayisi >= toplam_konu İSE
+      YAZDIR "Tüm konular bitti! Helal olsun, sınavda başarılar."
+    DEĞİLSE
+      kalan_konu = toplam_konu - tamamlanan_konu_sayisi
+      YAZDIR "Süre bitti ama tüm konular yetişmedi. Kalan konu sayısı: " + kalan_konu
+    BİTİR_EĞER
+
+  BİTİR_EĞER
+
+BİTİR
